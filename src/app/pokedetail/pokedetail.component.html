@@ -1,0 +1,5 @@
+
+<p *ngIf="detail">Pokemon {{detail.name}}</p>
+<ul *ngIf="detail">
+  <li *ngFor="let ability of detail.abilities "> {{ability.ability.name}} </li>
+</ul>
