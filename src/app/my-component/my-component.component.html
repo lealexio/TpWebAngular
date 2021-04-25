@@ -1,34 +1,40 @@
-<BR>
-<input class="form-control" readonly [(ngModel)]="id">
 
-<br>
+<div class="card">
+  <div class="card-header">
+    <div class="input-group mt-3 mb-3" widht="80%">
+      <div class="input-group-prepend">
+        <div class="input-group-text">ID of the pokemon</div>
+      </div>
+      <input type="text" class="form-control" value="{{selectedPokeId}}" readonly>
+    </div>
 
-<div class="input-group">
-  <div class="input-group-prepend">
-    <div class="input-group-text">ID</div>
+    <div class="input-group mt-3 mb-3" widht="80%">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Pokemon search</div>
+      </div>
+      <input class="form-control" [(ngModel)]="searchPokeName">
+    </div>
+
+    <div class="input-group mt-3 mb-3" widht="80%">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Search result </div>
+      </div>
+      <select class="form-control" [(ngModel)]="selectedPokeId">
+        <option [value]="poke.id"
+                *ngFor="let poke of pokes| filterPokemonPipe:'name':searchPokeName" >{{poke.name}}
+      </select>
+    </div>
+
+
+
   </div>
-  <input type="text" class="form-control" value="{{id}}" readonly>
-</div>
-<br>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <div class="input-group-text">Pokémon</div>
+
+  <div class="card-body text-center">
+    <button class="btn btn-dark" (click)="go()">Show abilities</button>
   </div>
-  <input type="text" class="form-control" value="{{selectedPokeId}}" readonly>
+
+  <div class="card-footer">
+    <app-pokedetail [detail]="pokeDetail"></app-pokedetail>
+  </div>
+
 </div>
-
-<br>
-<input class="form-control" [(ngModel)]="searchPokeName">
-<br>
-
-<select class="form-control" [(ngModel)]="selectedPokeId">
-  <option [value]="poke.id"
-          *ngFor="let poke of pokes| filterPokemonPipe:'name':searchPokeName" >{{poke.name}}
-</select>
-<br>
-<button class="btn btn-light" (click)="go()">Valider</button>
-<br>
-<div >
-  <app-pokedetail [detail]="pokeDetail"></app-pokedetail>
-</div>
-

@@ -1,5 +1,9 @@
 
-<p *ngIf="detail">Pokemon {{detail.name}}</p>
-<ul *ngIf="detail">
-  <li *ngFor="let ability of detail.abilities "> {{ability.ability.name}} </li>
+<ul class="list-group" *ngIf="detail">
+  <li class="list-group-item bg-light" ><b>Pokemon abilities :</b></li>
+  <li class="list-group-item" *ngFor="let ability of detail.abilities "> {{ability.ability.name}} </li>
+  <li class="list-group-item bg-light"> <b>Base experience : </b>{{detail.base_experience}} </li>
+  <li class="list-group-item bg-light"><b>Pokemon moves :</b></li>
+  <li class="list-group-item" *ngFor="let move of detail.moves "> {{move.move.name}} </li>
 </ul>
+
